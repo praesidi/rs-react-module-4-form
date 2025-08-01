@@ -1,35 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+import { SignIn } from "./pages/sign-in/sign-in";
+import { SignUp } from "./pages/sign-up/sign-up";
+import { Playground } from "./pages/playground/playground";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentPage, setCurrentPage] = useState<string>("playground");
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const getPage = () => {
+    switch (currentPage) {
+      case "sign_in":
+        return <SignIn />;
+
+      case "sign_up":
+        return <SignUp />;
+
+      case "playground":
+        return <Playground />;
+
+      default:
+        <p>Page Not Found</p>;
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="main">
+      <h1>{currentPage}</h1>
+      <button
+        onClick={() => {
+          setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+        }}
+        style={{ marginBottom: "32px" }}
+      >
+        theme
+      </button>
+      <div className="tabs">
+        <button
+          onClick={() => setCurrentPage("playground")}
+          className="button"
+        >
+          Playground
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <button
+          onClick={() => setCurrentPage("sign_in")}
+          className="button"
+        >
+          SignIn
+        </button>
+        <button
+          onClick={() => setCurrentPage("sign_up")}
+          className="button"
+        >
+          SignUp
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <div className="page-wrapper">{getPage()}</div>
+    </div>
+  );
 }
 
-export default App
+export default App;

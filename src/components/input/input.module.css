@@ -1,0 +1,265 @@
+:root {
+  /* colors */
+  --input-color: #000;
+  --label-color: #c9c9c9;
+  --desc-color: #828282;
+  --placeholder-color: #636363;
+  --error-color: #fa5252;
+  --asterisk-color: #fa5252;
+  --bd-color: #424242;
+  --bd-focused-color: #228be6;
+  --bg-color: #9a9c9d;
+  --bg-filled-color: #9a9c9d;
+
+  /* default input size == "md" */
+  --input-text-size: calc(1rem * var(--scale));
+  --label-text-size: calc(1rem * var(--scale));
+  --desc-text-size: calc(0.375rem * var(--scale));
+  --error-text-size: calc(0.375rem * var(--scale));
+
+  /* border radiuses */
+  --bd-radius-xs: calc(0.125rem * var(--scale));
+  --bd-radius-sm: calc(0.25rem * var(--scale));
+  --bd-radius-md: calc(0.5rem * var(--scale));
+  --bd-radius-lg: calc(1rem * var(--scale));
+  --bd-radius-xl: calc(2rem * var(--scale));
+
+  /* input height */
+  --input-height-xs: calc(1.875rem * var(--scale));
+  --input-height-sm: calc(2.25rem * var(--scale));
+  --input-height-md: calc(2.625rem * var(--scale));
+  --input-height-lg: calc(3.125rem * var(--scale));
+  --input-height-xl: calc(3.75rem * var(--scale));
+
+  /* input padding */
+  --input-padding-y-xs: calc(0.3125rem * var(--scale));
+  --input-padding-y-sm: calc(0.375rem * var(--scale));
+  --input-padding-y-md: calc(0.5rem * var(--scale));
+  --input-padding-y-lg: calc(0.625rem * var(--scale));
+  --input-padding-y-xl: calc(0.8125rem * var(--scale));
+
+  /* params */
+  --scale: 1;
+  --bd-size: calc(0.0625rem * var(--scale));
+  --input-height: var(--input-height-sm);
+}
+
+[data-theme="dark"] {
+  --input-color: #c9c9c9;
+  --placeholder-color: #636363;
+  --bd-focused-color: #228be6;
+  --bg-color: #9a9c9d;
+  --bg-filled-color: #9a9c9d;
+}
+
+.root {
+  box-sizing: border-box;
+  position: relative;
+}
+
+.label {
+  display: block;
+  color: var(--label-color);
+  text-align: left;
+  font-weight: 500;
+}
+
+.asterisk {
+  color: var(--asterisk-color);
+}
+
+.input_wrapper {
+  width: 100%;
+  min-width: 240px;
+  margin: 0.25rem 0;
+}
+
+.input {
+  width: 100%;
+  min-height: var(--input-height);
+  font-size: 16px;
+  box-sizing: border-box;
+  padding: 0 14px;
+  border: var(--bd-size) solid var(--bd-color);
+  text-align: left;
+  background-color: transparent;
+}
+
+.input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.input:focus,
+.input:focus-within,
+.input:focus-visible {
+  border-color: var(--bd-focused-color);
+}
+
+/* input size */
+.root[data-size="xs"] {
+  --input-height: var(--input-height-xs);
+  --input-text-size: calc(1rem * var(--scale));
+  --label-text-size: calc(1rem * var(--scale));
+  --desc-text-size: calc(0.375rem * var(--scale));
+  --error-text-size: calc(0.375rem * var(--scale));
+}
+
+.root[data-size="sm"] {
+  --input-height: var(--input-height-sm);
+  --input-text-size: calc(1rem * var(--scale));
+  --label-text-size: calc(1rem * var(--scale));
+  --desc-text-size: calc(0.375rem * var(--scale));
+  --error-text-size: calc(0.375rem * var(--scale));
+}
+
+.root[data-size="md"] {
+  --input-height: var(--input-height-md);
+  --input-text-size: calc(1rem * var(--scale));
+  --label-text-size: calc(1rem * var(--scale));
+  --desc-text-size: calc(0.375rem * var(--scale));
+  --error-text-size: calc(0.375rem * var(--scale));
+}
+
+.root[data-size="lg"] {
+  --input-height: var(--input-height-lg);
+  --input-text-size: calc(1rem * var(--scale));
+  --label-text-size: calc(1rem * var(--scale));
+  --desc-text-size: calc(0.375rem * var(--scale));
+  --error-text-size: calc(0.375rem * var(--scale));
+}
+
+.root[data-size="xl"] {
+  --input-height: var(--input-height-xl);
+  --input-text-size: calc(1rem * var(--scale));
+  --label-text-size: calc(1rem * var(--scale));
+  --desc-text-size: calc(0.375rem * var(--scale));
+  --error-text-size: calc(0.375rem * var(--scale));
+}
+
+/* input outlined variant */
+.input[data-variant="outlined"]:hover {
+  border: 1px solid inherit;
+  outline: none;
+}
+
+.input[data-variant="outlined"]:focus,
+.input[data-variant="outlined"]:focus-within {
+  border-color: 1px solid #ccc !important;
+  outline: none !important;
+}
+
+/* input filled variant */
+.input[data-variant="filled"] {
+  background-color: var(--bg-filled-color);
+  outline: none;
+  border: none;
+}
+
+/* input borderless variant */
+.input[data-variant="borderless"] {
+  padding-left: 0px;
+  border: none;
+  background: transparent;
+}
+
+.input[data-variant="borderless"]:hover,
+.input[data-variant="borderless"]:focus,
+.input[data-variant="borderless"]:focus-within {
+  outline: none;
+  border: none;
+}
+
+/* input underlined variant */
+.input[data-variant="underlined"] {
+  padding-left: 0px;
+  border: none;
+  background: transparent;
+}
+
+/* input border radius */
+.input[data-radius="xs"] {
+  border-radius: var(--bd-radius-xs);
+}
+
+.input[data-radius="sm"] {
+  border-radius: var(--bd-radius-sm);
+}
+
+.input[data-radius="md"] {
+  border-radius: var(--bd-radius-md);
+}
+
+.input[data-radius="lg"] {
+  border-radius: var(--bd-radius-lg);
+}
+
+.input[data-radius="xl"] {
+  border-radius: var(--bd-radius-xl);
+}
+
+/* input description */
+.description {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  color: var(--desc-color);
+  word-wrap: break-word;
+  line-height: 1.2;
+
+  font-size: var(--desc-text-size, calc(var(--input-text-size) - calc(0.125rem * var(--scale))));
+}
+
+/* error message */
+.error_message {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  color: var(--error-color);
+}
+
+/* changing colors when error is set */
+.error {
+  --color-placeholder: var(--error-color);
+  --color-bd: var(--error-color);
+  --color-bd-focused: var(--error-color);
+}
+
+/* input icon */
+.icon_wrapper {
+  user-select: none;
+  height: 100%;
+  width: 100%;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* show password button */
+.show_password_button_wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 90%;
+  top: 50%;
+  padding: 2px;
+}
+
+.show_password_button {
+  border-radius: 50%;
+  height: 100%;
+  border: none;
+  outline: none;
+  transition: 0.3s ease-out;
+  background: transparent;
+  aspect-ratio: 1/1;
+  padding: 4px;
+}
+
+.show_password_button:hover {
+  background: #bdb9b9;
+}
+
+.show_password_button:active {
+  outline: none;
+}
