@@ -1,0 +1,323 @@
+:root {
+  /* colors */
+  --input-color: #1d1d1d;
+  --label-color: #262626;
+  --desc-color: #828282;
+  --placeholder-color: rgba(0,0,0,0.25);
+  --error-color: #fa5252;
+  --asterisk-color: #fa5252;
+  --bd-color: #d9d9d9;
+  --bd-hover-color: #4096ff;
+  --bd-active-color: #1677ff;
+  --bg-color: #9a9c9d;
+  --bg-filled-color: rgba(0,0,0,0.04);
+  --bg-filled-hover-color: #F0F0F0;
+  --bg-filled-active-color: #FFFFFF;
+  --bg-disabled-color: rgba(0,0,0,0.04);
+
+  --input-padding: 6px 14px;
+  --input-icon-left-padding: 28px;
+  --input-text-size: 16px;
+  --label-text-size: 14px;
+  --desc-text-size: 12px;
+  --error-text-size: 12px;
+  --icon-size: 16px;
+  --icon-filter: none; 
+}
+
+[data-theme="dark"] {
+  --bd-focused-color: #228be6;
+  --bd-color: #424242;
+  --input-color: #c9c9c9;
+  --label-color: #c9c9c9;
+  --placeholder-color: #636363;
+  --bg-color: #141414;
+  --bg-filled-color: #262626;
+  --bg-filled-hover-color: #303030;
+  --bg-filled-active-color: #141414;
+  --bg-disabled-color: #262626;
+  --icon-filter: invert(0.45);
+}
+
+.root {
+  box-sizing: border-box;
+  position: relative;
+}
+
+.root * {
+  box-sizing: border-box;
+}
+
+.label {
+  display: block;
+  color: var(--label-color);
+  text-align: left;
+  font-weight: 500;
+}
+
+.asterisk {
+  color: var(--asterisk-color);
+}
+
+.input_wrapper {
+  width: 100%;
+  min-width: 240px;
+  height: var(--input-height);
+  margin: 4px 0;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  padding: var(--input-padding);
+  outline: none;
+  border: 1px solid var(--bd-color);
+  border-radius: var(--bd-radius);
+  
+  background-color: transparent;
+  color: var(--input-color);
+  font-size: var(--input-text-size);
+  line-height: var(--input-height);
+  text-align: left;
+  letter-spacing: 0.5px;
+  
+  transition: 0.3s ease-out;
+}
+
+.input:hover:enabled {
+  outline: none;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.label + .input:hover:enabled {
+  border-color: transparent;
+}
+
+.input:focus,
+.input:focus-within,
+.input:focus-visible {
+  border-color: var(--bd-active-color);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--placeholder-color);
+  letter-spacing: 0.5px;
+}
+
+.icon_padding {
+  padding-left: var(--input-icon-left-padding);
+}
+
+/* input size */
+.root[data-size="small"] {
+  --input-height: 24px;
+  --input-text-size: 14px;
+  --label-text-size: calc(1rem * var(--scale));
+  --desc-text-size: calc(0.375rem * var(--scale));
+  --error-text-size: 14px;
+  --error-text-line-height: 16px;
+  --icon-size: 14px;
+  --input-icon-left-padding: 26px;
+}
+
+.root[data-size="default"] {
+  --input-height: 32px;
+  --input-text-size: 16px;
+  --label-text-size: calc(1rem * var(--scale));
+  --desc-text-size: calc(0.375rem * var(--scale));
+  --error-text-size: 14px;
+  --error-text-line-height: 16px;
+  --icon-size: 16px;
+  --input-icon-left-padding: 30px;
+}
+
+.root[data-size="large"] {
+  --input-height: 40px;
+  --input-text-size: 20px;
+  --label-text-size: calc(1rem * var(--scale));
+  --desc-text-size: calc(0.375rem * var(--scale));
+  --error-text-size: 16px;
+  --error-text-line-height: 18px;
+  --icon-size: 20px;
+  --input-icon-left-padding: 34px;
+}
+
+/* input border radius */
+.bd_radius_xs {
+  border-radius: 2px;
+}
+
+.bd_radius_sm {
+  border-radius: 4px;
+}
+
+.bd_radius_md {
+  border-radius: 8px;
+}
+
+.bd_radius_lg {
+  border-radius: 12px;
+}
+
+.bd_radius_xl {
+  border-radius: 9999px;
+}
+
+/* input outlined variant */
+.outlined:hover:enabled {
+  border: 1px solid var(--bd-hover-color);
+}
+
+.outlined:disabled {
+  background-color: var(--bg-disabled-color);
+}
+.outlined:focus,
+.outlined:focus-within,
+.outlined:focus-visible {
+  border-color: 1px solid #ccc !important;
+}
+
+/* input filled variant */
+.filled {
+  background-color: var(--bg-filled-color);
+  border-color: transparent;
+}
+
+.filled:hover:enabled {
+  background-color: var(--bg-filled-hover-color);
+}
+
+.filled:disabled {
+  border-color: var(--bd-color);
+}
+
+.filled:focus,
+.filled:focus-within,
+.filled:focus-visible {
+  background-color: var(--bg-filled-active-color);
+}
+
+/* input borderless variant */
+.borderless {
+  border-color: transparent;
+  background: transparent;
+  --bd-radius: none;
+}
+
+.borderless:hover:enabled,
+.borderless:focus,
+.borderless:focus-within,
+.borderless:focus-visible {
+  border-color: transparent;
+}
+
+/* input underlined variant */
+.underlined {
+  border-color: transparent;
+  border-bottom: 1px solid var(--bd-color);
+  background: transparent;
+  --bd-radius: none;
+}
+
+.underlined:hover:enabled {
+  border-color: transparent;
+  border-bottom-color: var(--bd-color);
+}
+
+.underlined:focus,
+.underlined:focus-within,
+.underlined:focus-visible {
+  border-color: transparent;
+  border-bottom-color: var(--bd-active-color);
+}
+
+/* input description */
+.description {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  color: var(--desc-color);
+  word-wrap: break-word;
+  line-height: 1.2;
+  font-size: var(--desc-text-size);
+}
+
+/* error message */
+.error_message {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  color: var(--error-color);
+  word-wrap: break-word;
+  font-size: var(--error-text-size);
+  line-height: var(--error-text-line-height);
+}
+
+/* changing colors when error is set */
+.error {
+  --placeholder-color: var(--error-color);
+  --bd-color: var(--error-color);
+  --bd-active-color: var(--error-color);
+  --bd-hover-color: var(--error-color);
+}
+
+/* input icon */
+.icon_container {
+  height: 100%;
+  width: 100%;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  user-select: none;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.icon_wrapper,
+.icon_wrapper img {
+  height: var(--icon-size);
+  overflow: hidden;
+}
+
+.icon_wrapper img {
+  filter: var(--icon-filter);
+}
+
+/* show password button */
+.show_password_button_wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 90%;
+  top: 50%;
+  padding: 2px;
+  height: 100%;
+}
+
+.show_password_button {
+  border-radius: 50%;
+  height: 100%;
+  border: none;
+  outline: none;
+  filter: opacity(0.7);
+  transition: 0.3s ease-out;
+  background: transparent;
+  aspect-ratio: 1/1;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.show_password_button:hover:enabled {
+  /* background: #bdb9b9; */
+  filter: opacity(1);
+}
+
+.show_password_button:active {
+  outline: none;
+}
