@@ -9,5 +9,11 @@
   min-width: 300px;
 }
 
-.form input {
+.form div:first-child {
+  margin-bottom: 8px;
+}
+
+.button {
+  margin-top: 12px;
+  padding: 8px 16px;
 }

@@ -1,6 +1,7 @@
 import type { FormEvent } from "react";
 import Input from "../../components/input/input";
 import styles from "./sign-in.module.css";
+import Icon from "../../components/icon/icon";
 
 export const SignIn = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -15,19 +16,28 @@ export const SignIn = () => {
   };
 
   return (
-    <div className={styles["wrapper"]}>
+    <div className={styles.wrapper}>
       <form onSubmit={handleSubmit}>
         <Input
           type="email"
           name="email"
-          variant="filled"
+          variant="outlined"
           placeholder="email"
-          radius="xs"
-          with_asterisk
+          radius="sm"
           label="email"
+          with_asterisk
+          icon={<Icon name={"at"} size="16px"/>}
         />
-        <Input type="password" name="password" placeholder="password" />
-        <button type="submit" className="button">
+        
+        <Input 
+          type="password"
+          name="password"
+          variant="outlined"
+          placeholder="password"
+          radius="sm"
+          label="password"
+        />
+        <button type="submit" className={styles.button}>
           Войти
         </button>
       </form>
