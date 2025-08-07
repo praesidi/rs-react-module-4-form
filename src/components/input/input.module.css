@@ -22,6 +22,7 @@
   --desc-text-size: 12px;
   --error-text-size: 12px;
   --icon-size: 16px;
+  --icon-filter: none; 
 }
 
 [data-theme="dark"] {
@@ -35,6 +36,7 @@
   --bg-filled-hover-color: #303030;
   --bg-filled-active-color: #141414;
   --bg-disabled-color: #262626;
+  --icon-filter: invert(0.45);
 }
 
 .root {
@@ -282,6 +284,10 @@
 .icon_wrapper img {
   height: var(--icon-size);
   overflow: hidden;
+}
+
+.icon_wrapper img {
+  filter: var(--icon-filter);
 }
 
 /* show password button */
