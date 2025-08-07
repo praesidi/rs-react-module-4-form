@@ -6,10 +6,23 @@ import { Playground } from "./pages/playground/playground";
 
 function App() {
   const [currentPage, setCurrentPage] = useState<string>("playground");
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState<"light" | "dark" | null>(null);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+      const savedTheme = window.localStorage.getItem('theme') as "light" | "dark";
+      
+      if (savedTheme !== null) {
+        setTheme(savedTheme);
+      } else {
+        setTheme('light');
+      }
+  }, []);
+
+  useEffect(() => {
+    if (theme !== null) {
+      window.localStorage.setItem('theme', theme as string);
+    }
+    document.documentElement.setAttribute("data-theme", theme as string);
   }, [theme]);
 
   const getPage = () => {
