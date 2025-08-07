@@ -1,8 +1,14 @@
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import styles from "./sign-up.module.css";
 import Input from "../../components/input/input";
 
 export const SignUp = () => {
+  const [gender, setGender] = useState<'male' | 'female' | null>(null);
+
+  const handleGender = (selectedGender: 'male' | 'female') => {
+    setGender(selectedGender);
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -21,8 +27,28 @@ export const SignUp = () => {
         <Input type="text" name="nickname" />
         <Input type="email" name="email" />
         <div className={styles["gender-select"]}>
-          <Input type="radio" value="male" name="gender" label="муж" />
-          <Input type="radio" value="female" name="gender" label="жен" />
+          <div style={{display: "flex"}}>
+            <label>
+              муж
+              <input 
+                type="radio"
+                value="male"
+                checked={gender==="male"}
+                onChange={() => handleGender('male')}
+              />
+            </label>
+          </div>
+          <div style={{display: "flex"}}>
+            <label>
+              жен
+              <input 
+                type="radio"
+                value="female"
+                checked={gender==="female"}
+                onChange={() => handleGender('female')}
+              />
+            </label>
+          </div>
         </div>
         <Input type="password" name="password" />
         <Input type="password" name="password2" />
