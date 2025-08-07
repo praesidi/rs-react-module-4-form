@@ -2,13 +2,20 @@ import { useState } from "react";
 import styles from "./playground.module.css";
 import Input from "../../components/input/input";
 import { Checkbox } from "../../components/checkbox/checkbox";
+import Icon from "../../components/icon/icon";
 
-const sizeValues = {
+const borderRadiusValues = {
   "1": "xs",
   "2": "sm",
   "3": "md",
   "4": "lg",
   "5": "xl",
+};
+
+const sizeValues = {
+  "1": "small",
+  "2": "default",
+  "3": "large",
 };
 
 export const Playground = () => {
@@ -24,6 +31,7 @@ export const Playground = () => {
     disabled: false,
     with_asterisk: false,
     is_password: false,
+    has_icon: false
   });
 
   console.log("rerender");
@@ -44,11 +52,12 @@ export const Playground = () => {
           error={inputProps.error}
           description={inputProps.description}
           variant={inputProps.variant}
-          radius={sizeValues[inputProps.radius as keyof object]}
+          radius={borderRadiusValues[inputProps.radius as keyof object]}
           size={sizeValues[inputProps.size as keyof object]}
           disabled={inputProps.disabled}
           with_asterisk={inputProps.with_asterisk}
           type={inputProps.is_password ? "password" : ""}
+          icon={inputProps.has_icon ? <Icon name={"at"}/> : null}
         />
       </div>
       <div className={styles.menu_wrapper}>
@@ -125,7 +134,7 @@ export const Playground = () => {
           <input
             type="range"
             min={1}
-            max={5}
+            max={3}
             step={1}
             value={inputProps.size}
             onChange={(e) => handleChange("size", e.target.value)}
@@ -153,6 +162,14 @@ export const Playground = () => {
           <Checkbox
             checked={inputProps.is_password}
             onChange={(e) => handleChange("is_password", e.target.checked)}
+          />
+        </label>
+        {/* has icon */}
+        <label className={styles.label}>
+          <span>has icon</span>
+          <Checkbox
+            checked={inputProps.has_icon}
+            onChange={(e) => handleChange("has_icon", e.target.checked)}
           />
         </label>
       </div>
