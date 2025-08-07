@@ -15,7 +15,7 @@ const Icons = {
   "eye-off": EyeOff,
 };
 
-export default function Icon({ name, size = "20px" }: Props) {
+export default function Icon({ name, size = "100%" }: Props) {
   return (
     <div
       style={{
@@ -24,7 +24,7 @@ export default function Icon({ name, size = "20px" }: Props) {
         alignItems: "center",
       }}
     >
-      <img src={Icons[name]} alt="icon" style={{ width: size, height: size }} />
+      <img src={Icons[name]} alt="icon" style={{ maxWidth: size, maxHeight: size }} />
     </div>
   );
 }
